@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CryptoGraphy</title>
+    <link rel="stylesheet" href="combine.css">
+  </head>
+  <style media="screen">
+    .row
+    {
+      text-align:center;
+    }
+  </style>
+  <body>
+    <div class="row">
+      <h1 style="margin-left:70px;">Vigenere Cipher</h1>
+      <div class="first-div">
+          <div class="col-1">
+            <h1 style="margin-left:70px;">Encryption</h1>
+            <table>
+              <tr>
+                <td><label for="">Plaintext:</label></td>
+                <td><input type="text" id="plaintext" name="plaintext" value="" placeholder="plainText"></td>
+              </tr>
+              <tr>
+                <td><label for="">Key:</label></td>
+                <td><input type="text" id="key" name="key" value="" placeholder="key" required></td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-2">
+            <input type="submit" name="submit" value="Encrypt" onClick="compute()">
+          </div>
+          <div class="">
+            <div id="box">
+              <h1 id="h1"></h1>
+              <label id="pt"></label>
+              <p id="para"></p>
+            </div>
+          </div>
+          <div class="">
+            <div class="lbtn">
+              <button type="button" name="button" onclick="parent.location='index.html'">Back</button>
+              <button type="button" name="button" onclick="location.reload()">Reset</button>
+            </div>
+          </div>
+      </div>
+      <div class="second-div">
+          <div class="col-1">
+            <h1 style="margin-left:70px;">Decryption</h1>
+            <table>
+              <tr>
+                <td><label for="">Ciphertext:</label></td>
+                <td><input type="text" id="ciphertext" name="ciphertext" value="" placeholder="cipherText"></td>
+              </tr>
+              <tr>
+                <td><label for="">Key:</label></td>
+                <td><input type="text" id="dkey" name="key" value="" placeholder="key" required></td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-2">
+            <input type="submit" name="submit" value="Decrypt" onClick="compute1()">
+          </div>
+          <div class="">
+            <div id="box">
+              <h1 id="h1"></h1>
+              <label id="pt"></label>
+              <p id="para"></p>
+            </div>
+          </div>
+          <div class="">
+            <div class="lbtn">
+              <button type="button" name="button" onclick="parent.location='index.html'">Back</button>
+              <button type="button" name="button" onclick="location.reload()">Reset</button>
+            </div>
+          </div>
+
+      </div>
+        <!-- <div class="">
+          <div class="lbtn" >
+            <button type="button" name="button" onclick="parent.location='index.html'">Back</button>
+            <button type="button" name="button" onclick="location.reload()">Reset</button>
+          </div>
+        </div> -->
+    </div>
+    <script>
+
+      function compute()
+      {
+        var plaintext = document.getElementById("plaintext").value.trim();
+        var key = document.getElementById("key").value.trim();
+        var display = document.getElementById("para");
+        var box=document.getElementById("box");
+        var ciphertext="";
+        var equal="";
+        var pt,k;
+        if(plaintext.length!=0&&key.length!=0)
+        {
+          pt=plaintext.split(" ").join("").toUpperCase();
+          k = key.split(" ").join("");
+          var length_pt=pt.length;
+          var length_k=k.length;
+          if(length_k>length_pt)
+          {
+              equal=k.slice(0,length_pt);
+          }
+          else if(length_k<length_pt)
+          {
+              var counter=0;
+              for(let i=0;i<length_pt;i++)
+              {
+                equal += k.charAt(counter);
+                counter++;
+                if(counter==length_k)
+                {
+                  counter=0;
+                }
+              }
+          }
+          else
+          {
+            equal=k;
+          }
+          equal=equal.toUpperCase();
+          // alert("plaintext="+pt);
+          // alert("equal="+equal);
+          for(let j=0;j<pt.length;j++)
+          {
+                if(pt.charCodeAt(j)>=65&&pt.charCodeAt(j)<=90)
+                {
+                  var result = (((pt.charCodeAt(j)+equal.charCodeAt(j))%26)+65);
+                  ciphertext += String.fromCharCode(result);
+                }
+                else
+                {
+                  ciphertext+=String.fromCharCode(pt.charCodeAt(j));
+                }
+          }
+          document.getElementById('h1').innerHTML="See Your Result";
+          document.getElementById("pt").innerHTML="Your plain text = " + pt;
+          box.style.borderStyle="solid";
+          box.style.borderColor="black";
+          display.innerHTML ="The ciphertext is = "+ ciphertext;
+        }
+        else
+        {
+          alert("Please Enter All input fields And Try Again!!");
+        }
+    }
+
+    function compute1()
+    {
+        var ciphertext = document.getElementById("ciphertext").value.trim();
+        var key = document.getElementById("dkey").value.trim();
+        var display = document.getElementById("para");
+        var box=document.getElementById("box");
+        var plaintext="";
+        var equal="";
+        var ct,k;
+        if(ciphertext.length!=0&&key.length!=0)
+        {
+            ct=ciphertext.split(" ").join("");
+            k = key.split(" ").join("");
+            var length_ct=ct.length;
+            var length_k=k.length;
+            if(length_k>length_ct)
+            {
+                equal=k.slice(0,length_ct);
+            }
+            else if(length_k<length_ct)
+            {
+                var counter=0;
+                for(let i=0;i<length_ct;i++)
+                {
+                    equal += k.charAt(counter);
+                    counter++;
+                    if(counter==length_k)
+                    {
+                      counter=0;
+                    }
+                }
+            }
+            else
+            {
+                equal=k;
+            }
+            var upper_ct=ct.toUpperCase();
+            var upper_k=equal.toUpperCase();
+            var result;
+            for(let j=0;j<upper_ct.length;j++)
+            {
+                if(upper_ct.charCodeAt(j)>=65&&upper_ct.charCodeAt(j)<=90)
+                {
+                    // alert("Inside if");
+                    var first=upper_ct.charCodeAt(j);
+                    var second=upper_k.charCodeAt(j);
+                    var difference=(first-second);
+                    // alert(difference);
+                    if(difference<0)
+                    {
+                      result=91+difference;
+
+                    }
+                    else
+                    {
+                      result=(difference%26+65);
+
+                    }
+                    // alert(result);
+                    plaintext+=String.fromCharCode(result);
+                }
+                else
+                {
+                  var result=upper_ct.charCodeAt(j);
+                  plaintext+=String.fromCharCode(result);
+
+                }
+            }
+            document.getElementById('h1').innerHTML="See Your Result";
+            document.getElementById("pt").innerHTML="Your CipherText  = " + upper_ct;
+            box.style.borderStyle="solid";
+            box.style.borderColor="black";
+            display.innerHTML ="The Plaintext is = "+ plaintext;
+      }
+      else
+      {
+        alert("Please Enter All input fields And Try Again!!");
+      }
+
+
+    }
+
+    </script>
+  </body>
+</html>

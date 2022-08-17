@@ -1,0 +1,72 @@
+body
+{
+  /* C8F2EF */
+  margin:0;
+  background-color: #C8F2EF;
+  /* background: linear-gradient(120deg,#2980b9,#8e44ad); */
+}
+h1
+{
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom:1.2em;
+  color: black;
+}
+img
+{
+    /* border: 2px solid; */
+    height:6em;
+}
+#heading:hover
+{
+    cursor: pointer;
+}
+.col
+{
+  /* background-image: url("1.jpg"); */
+  width:100%;
+  height:46em;
+  border:2px solid;
+  text-align: center;
+}
+.btn
+{
+  border-radius: 10px;
+  height: 30px;
+  border-color: inherit;
+  font-weight: bold;
+}
+.btn:hover
+{
+  background: lightblue;
+}
+.btn1 > .btn
+{
+  width:10em;
+  margin:15px;
+}
+.btn1 > .btn
+{
+  cursor: pointer;
+}
+a
+{
+  text-decoration: none;
+}
+.btn2 > .btn
+{
+  width:10em;
+}
+.btn2 > .btn
+{
+  cursor: pointer;
+}
+.btn3 > .btn
+{
+  width:10em;
+  margin:15px;
+}
+.btn3 > .btn:hover
+{
+  cursor:pointer;
+}

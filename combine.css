@@ -1,0 +1,155 @@
+
+body
+{
+  margin:0;
+  background: url("") no-repeat;
+  background-color: #C8F2EF;
+  /* background: linear-gradient(120deg,#2980b9,#8e44ad); */
+}
+
+table
+{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:10px;
+  margin-top:20px;
+}
+td
+{
+  padding-bottom: 10px;
+}
+input
+{
+  border-radius: 8px;
+  height:25px;
+  border-color:inherit;
+}
+input:hover
+{
+  cursor: pointer;
+}
+.col-2
+{
+  margin-left:60px;
+}
+.col-2 > input
+{
+  font-weight: bold;
+  height: 30px;
+  width:6em;
+  border-color:inherit;
+}
+.col-2 > input:hover
+{
+  background: lightblue;
+}
+.first-div
+{
+  /* display: inline-block; */
+  /* border:10px solid; */
+  margin-left: 100px;
+  text-align: center;
+  margin-right:70px;
+}
+.second-div
+{
+  text-align: center;
+  /* display:inline-block; */
+  /* border:10px solid; */
+  /* margin-bottom: 2em; */
+}
+#box
+{
+    text-align: center;
+    margin-left: 25%;
+    margin-top:15px;
+    color:yellow;
+    background-color: grey;
+    /* border:2px solid ; */
+    width:50%;
+}
+#h1
+{
+  font-family: serif;
+  /* font-style: italic; */
+}
+#para
+{
+  font-family: serif;
+  /* font-weight: bold; */
+  font-size:1.1em;
+}
+#pt
+{
+  font-family: serif;
+  /* font-weight: bold; */
+  font-size: 1.1em;
+}
+/* #shift1
+{
+  margin-top: 15px;
+  margin-bottom: 0px;
+} */
+.lbtn
+{
+  margin-left:90px;
+  margin-top:20px
+}
+.lbtn > button
+{
+  font-weight: bold;
+  height: 30px;
+  border-radius: 8px;
+  width:6em;
+  border-color:inherit;
+}
+.lbtn > button:hover
+{
+  background: lightblue;
+  cursor: pointer;
+}
+button
+{
+  margin-right:10px;
+}
+#btn
+{
+  font-weight: bold;
+  height: 30px;
+  border-radius: 8px;
+  width:6em;
+  border-color:inherit;
+  margin-left: 30px;
+}
+#btn:hover
+{
+  cursor: pointer;
+  background-color: lightblue;
+}
+
+/* #submitBtn
+{
+  border-radius: 8px;
+  height:25px;
+  border-color:inherit;
+}
+#submitBtn:hover
+{
+  cursor:pointer;
+} */
+
+/* .first-div
+{
+  display: inline;
+  margin-left:900px;
+} */
+
+/* }
+.main
+{
+  border:3px solid blue;
+}
+.row
+{
+  border:3px solid red;
+} */

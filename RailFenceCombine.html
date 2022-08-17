@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CryptoGraphy</title>
+    <link rel="stylesheet" href="combine.css">
+  </head>
+  <style media="screen">
+    .row
+    {
+      text-align:center;
+    }
+  </style>
+  <body>
+    <div class="row">
+      <h1 style="margin-left:70px;">Rail Fence Cipher</h1>
+        <div class="first-div">
+          <div class="col-1">
+              <h1 style="margin-left:70px;">Encryption</h1>
+              <table>
+                <tr>
+                  <td><label for="">Plaintext:</label></td>
+                  <td><input type="text" id="plaintext" name="plaintext" value="" placeholder="plainText"></td>
+                </tr>
+                <tr>
+                  <td><label for="">Key:</label></td>
+                  <td><input type="number" id="key" name="shift" value="" placeholder="key" required></td>
+                </tr>
+              </table>
+          </div>
+          <div class="col-2">
+            <input type="submit" name="submit" value="Encrypt" onclick="Compute()">
+          </div>
+      <!-- </div> -->
+          <div class="">
+            <div id="box">
+              <h1 id="h1"></h1>
+              <label id="pt"></label>
+              <p id="para"></p>
+            </div>
+          </div>
+          <div class="">
+            <div class="lbtn">
+              <button type="button" name="button" onclick="parent.location='index.html'">Back</button>
+              <button type="button" name="button" onclick="location.reload()">Reset</button>
+            </div>
+          </div>
+        </div>
+        <div class="second-div">
+          <div class="col-1">
+              <h1 style="margin-left:70px;">Decryption</h1>
+              <table>
+                <tr>
+                  <td><label for="">Ciphertext:</label></td>
+                  <td><input type="text" id="ciphertext" name="ciphertext" value="" placeholder="cipherText"></td>
+                </tr>
+                <tr>
+                  <td><label for="">Key:</label></td>
+                  <td><input type="text" id="dkey" name="key" value="" placeholder="key" required></td>
+                </tr>
+              </table>
+          </div>
+          <div class="col-2">
+              <input type="submit" name="submit" value="Decrypt" onClick="compute1()">
+          </div>
+          <div class="">
+            <div id="box">
+                <h1 id="h1"></h1>
+                <label id="pt"></label>
+                <p id="para"></p>
+            </div>
+          </div>
+          <div class="">
+            <div class="lbtn">
+                <button type="button" name="button" onclick="parent.location='index.html'">Back</button>
+                <button type="button" name="button" onclick="location.reload()">Reset</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <script>
+      function Compute()
+      {
+
+        var pt=document.getElementById('plaintext').value;
+        var pt_length=parseInt(pt.length);
+        var k_length=parseInt(document.getElementById('key').value);
+        var j,k,sum=0,counter=0;
+        var ciphertext="";
+        var pt_new="";
+        if(pt_length!=0&&(!isNaN(k_length)))
+        {
+            var array= new Array(k);
+            for(j=0;j<k_length;j++)
+            {
+              array[j]=new Array(pt_length);
+            }
+            for(j=0; j<k_length;j++)
+            {
+              for(k=0;k<pt_length;k++)
+              {
+                array[j][k]='\n';
+
+              }
+            }
+            for(let i=0;i<pt_length;i++)
+            {
+              if(pt.charAt(i)==' ')
+              {
+                pt_new+='$';
+              }
+              else
+              {
+                pt_new+=pt.charAt(i);
+              }
+            }
+            for(j=0;j<pt_length;j++)
+            {
+              if(counter==(k_length-1))
+              {
+                while(counter>=0)
+                {
+                  array[counter][j]=pt_new[j];
+                  counter=counter-1;
+                  j=j+1;
+                }
+                counter=1;
+                j=j-1;
+              }
+              else
+              {
+                  array[counter][j]=pt_new[j];
+                  counter++;
+                }
+              }
+              for(j=0;j<k_length;j++)
+              {
+                for(k=0;k<pt_length;k++)
+                {
+                  if(array[j][k]!='\n')
+                  {
+                    ciphertext+=array[j][k];
+
+                  }
+                }
+              }
+              document.getElementById('h1').innerHTML="See Your Result";
+              document.getElementById("pt").innerHTML="Your plain text = " + pt;
+              document.getElementById("box").style.borderStyle="solid";
+              document.getElementById("box").style.borderStyle="black";
+              document.getElementById("para").innerHTML="The ciphertext is = "+ ciphertext;
+        }
+        else
+        {
+              alert("Please Enter All input fields And Try Again!!");
+        }
+      }
+    </script>
+    <!-- way to include javascript from external file -->
+    <!-- <script src="tryit.js" charset="utf-8"></script> -->
+    <script type="text/javascript">
+      function compute1()
+      {
+        var ct=document.getElementById('ciphertext').value.trim();
+        var ct_length=parseInt(ct.length);
+        var k_length=parseInt(document.getElementById('dkey').value);
+        var j,k,m,sum=0,counter=0;
+        var plaintext="";
+        if(ct_length!=0&&(!isNaN(k_length)))
+        {
+            var array= new Array(k);
+            for(j=0;j<k_length;j++)
+            {
+              array[j]=new Array(ct_length);
+            }
+            for(j=0; j<k_length;j++)
+            {
+              for(k=0;k<ct_length;k++)
+              {
+                array[j][k]='\n';
+              }
+            }
+             var array_index=0;
+            for(m=0;m<k_length;m++)
+            {
+              counter=0;
+              for(j=0;j<ct_length;j++)
+              {
+                    if(counter==(k_length-1))
+                    {
+                      while(counter>=0)
+                      {
+                        // array[counter][j]=pt[j];
+                        if(counter==m)
+                        {
+                          // alert(" if while loopn says"+counter+" "+j+"="+pt[array_index]);
+                            array[counter][j]=ct[array_index];
+                            array_index++;
+                        }
+                        counter=counter-1;
+                        j=j+1;
+                        if(j==ct_length)
+                        {
+                          break;
+                        }
+                      }
+                      counter=1;
+                      j=j-1;
+                      // alert(j);
+                    }
+                    else
+                    {
+                      if(counter==m)
+                      {
+                          // alert("else says "+counter+" "+j+"="+pt[array_index]);
+                            array[counter][j]=ct[array_index];
+                            array_index++;
+                      }
+                      // array[counter][j]=pt[j];
+                      counter++;
+                    }
+              }
+            }
+            // Plaint,ext
+            counter=0;
+            for(j=0;j<ct_length;j++)
+            {
+                  if(counter==(k_length-1))
+                  {
+                    while(counter>=0)
+                    {
+                      // array[counter][j]=pt[j];
+                      // alert("if "+counter+" "+j+"="+array[counter][j]);
+                      plaintext+=array[counter][j];
+                      counter=counter-1;
+                      j=j+1;
+                      if(j==ct_length)
+                      {
+                        break;
+                      }
+                    }
+                    counter=1;
+                    j=j-1;
+                  }
+                  else
+                  {
+                        plaintext+=array[counter][j];
+                        counter++;
+                  }
+            }
+              document.getElementById('h1').innerHTML="See Your Result";
+              document.getElementById("pt").innerHTML="Your cipher text = " + ct;
+              document.getElementById("box").style.borderStyle="solid";
+              document.getElementById("box").style.borderStyle="black";
+              document.getElementById("para").innerHTML="The plaintext is = "+ plaintext;
+            }
+            else
+            {
+              alert("Please Enter All input fields And Try Again!!");
+            }
+          }
+    </script>
+  </body>
+</html>
