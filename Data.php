@@ -1,20 +1,14 @@
  <?php
 
- // $to_email = "ronakkotiya81@gmail.com";
- // $subject = "Simple Email Test via PHP";
- // $body = "Hi, This is test email send by PHP Script";
- //  $headers = "From: sender email";
 $to_email=$_POST["email"];
 $subject="Message";
 $body=$_POST["data"];
 $headers="Senders Email";
 $shifts=$_POST["shift"];
-// $pt_length=strlen($body);
 ?>
+
 <?php
-  // echo $to_email.'<br>';
-  // echo $body.'<br>';
-  // echo $shifts.'<br>';
+
  if(isset($to_email)&&isset($subject)&&isset($body)&&isset($shifts))
  {
    if (mail($to_email, $subject, $body,$headers))
